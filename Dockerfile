@@ -1,7 +1,5 @@
 FROM node:lts as build-env
 
-ENV PORT 3000
-
 WORKDIR /build
 
 COPY package.json package-lock.json /app/
@@ -13,6 +11,9 @@ COPY . /build
 RUN npm run build
 
 FROM node:lts-alpine
+
+ENV PORT 3000
+ENV NODE_ENV production
 
 WORKDIR /app
 
